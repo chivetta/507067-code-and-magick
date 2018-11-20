@@ -197,18 +197,21 @@
     return fireballSpead;
   };
 
-  var getWizardHeight = function(wizardHeight) {
-    wizardHeight *= 1.337;
+  // высота мага — это пропорция 1.337 * ширина мага
+  var getWizardHeight = function(wizardWidth) {
+    wizardHeight = wizardWidth * 1.337; // ширина 70, высота 93,59
     return wizardHeight;
   };
 
+  // центр фигурки мага находился посередине игрового поля
   var getWizardX = function(width) {
-    var centerPointX = (width/2) - (wizardWidth/2);
+    var centerPointX = (width/2) - (wizardWidth/2); // 700/2-70/2 = 350-35 = 315
     return centerPointX;
   };
 
+  // маг появлялся на высоте две трети игрового поля от земли (точка в центре фигурки)
   var getWizardY = function(height) {
-    var centerPointY = height/3;
+    var centerPointY = (height / 3) - (wizardHeight/2) ; // 300/3-93,59/2 = 100-46,795 = 53,205
     return centerPointY;
   };
 
