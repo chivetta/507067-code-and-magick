@@ -1,3 +1,5 @@
+'use strict';
+
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 var CLOUD_X = 100;
@@ -17,9 +19,9 @@ var renderCloud = function (ctx, x, y, color) {
 var getMaxElement = function (array) {
   var maxElement = array[0];
 
-  for (var i = 1; i< array.length; i++) {
-    if (array[i] > maxElement) {
-      maxElement = array[i];
+  for (var j = 1; j < array.length; j++) {
+    if (array[j] > maxElement) {
+      maxElement = array[j];
     }
   }
 
@@ -42,23 +44,23 @@ window.renderStatistics = function (ctx, names, times) {
     if (names[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-        var getRandomBlueColor = function () { // случайный синий для столбцов других игроков
-          var value = '0123456789ABCDEF';
-          var color = '#0000';
-          for (var i = 0; i < 2; i++) {
-            color += value[Math.floor(Math.random() * 16)];
-          }
-
-          return color;
+      var getRandomBlueColor = function () { // случайный синий для столбцов других игроков
+        var value = '0123456789ABCDEF';
+        var color = '#0000';
+        for (i = 0; i < 2; i++) {
+          color += value[Math.floor(Math.random() * 16)];
         }
+
+        return color;
+      };
 
       ctx.fillStyle = getRandomBlueColor();
     }
 
     ctx.fillText(Math.floor(times[i]), CLOUD_X + (GAP * 2.5) + WHITE_SPACE * (i + 1) + BAR_WIDTH * i, CLOUD_HEIGHT - (TEXT_GAP * 2.5) - (BAR_HEIGHT * times[i]) / maxTime); // расположение результата
 
-    ctx.fillRect(CLOUD_X + (GAP / 2) + WHITE_SPACE * (i + 1) + BAR_WIDTH * i, BAR_LEVEL, BAR_WIDTH, - 1 * (BAR_HEIGHT * times[i]) / maxTime); // расположение столбца
+    ctx.fillRect(CLOUD_X + (GAP / 2) + WHITE_SPACE * (i + 1) + BAR_WIDTH * i, BAR_LEVEL, BAR_WIDTH, -1 * (BAR_HEIGHT * times[i]) / maxTime); // расположение столбца
 
     ctx.fillText(names[i], CLOUD_X + (GAP * 2.5) + WHITE_SPACE * (i + 1) + BAR_WIDTH * i, CLOUD_HEIGHT - TEXT_GAP); // расположение имени
-  };
+  }
 };
