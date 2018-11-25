@@ -47,7 +47,7 @@ window.renderStatistics = function (ctx, names, times) {
       var getRandomBlueColor = function () { // случайный синий для столбцов других игроков
         var value = '0123456789ABCDEF';
         var color = '#0000';
-        for (i = 0; i < 2; i++) {
+        for (var number = 0; number < 2; number++) {
           color += value[Math.floor(Math.random() * 16)];
         }
 
